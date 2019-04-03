@@ -1,5 +1,7 @@
 # ef_qrcode
 
+[![pub package](https://img.shields.io/pub/v/ef_qrcode.svg)](https://pub.dartlang.org/packages/ef_qrcode)
+
 A flutter plugin can be used to generate QRCode.
 
 ## Example
