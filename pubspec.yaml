@@ -1,7 +1,7 @@
 name: ef_qrcode
-description: A new flutter plugin project.
-version: 0.0.1
-author: EyreFree
+description: A flutter plugin can be used to generate QRCode.
+version: 0.1.0
+author: EyreFree <eyrefree@eyrefree.org>
 homepage: https://github.com/EFPub/ef_qrcode
 
 environment:

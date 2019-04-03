@@ -84,9 +84,11 @@ packages:
   permission:
     dependency: "direct main"
     description:
-      name: permission
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "."
+      ref: HEAD
+      resolved-ref: "73b7728c62af328c9d80f9457a5c75318e3dbd1a"
+      url: "git@github.com:EFRenovation/permission.git"
+    source: git
     version: "0.1.1"
   quiver:
     dependency: transitive

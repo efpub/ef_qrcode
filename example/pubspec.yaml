@@ -13,7 +13,8 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
 
-  permission: ^0.1.1
+  permission:
+    git: git@github.com:EFRenovation/permission.git
 
 dev_dependencies:
   flutter_test:

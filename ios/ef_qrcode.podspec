@@ -17,6 +17,6 @@ ef_qrcode is a lightweight, pure-Swift library for generating pretty QRCode imag
   s.dependency 'Flutter'
 
   s.ios.deployment_target = '8.0'
-  s.dependency 'EFQRCode', '~> 5.0.0'
+  s.dependency 'EFQRCode', '~> 4.5.0'
 end
 

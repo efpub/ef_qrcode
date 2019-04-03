@@ -7,13 +7,14 @@ import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 import io.flutter.plugin.common.PluginRegistry.Registrar
 
-import com.github.sumimakito.awesomeqr.AwesomeQRCode
+import net.glxn.qrgen.android.QRCode
 
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.net.Uri
 import android.os.Environment
 import android.util.Log
+import net.glxn.qrgen.core.image.ImageType
 import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
@@ -80,18 +81,12 @@ class EfQrcodePlugin: MethodCallHandler {
   }
 
   fun generate(content: String, size: Int, backgroundColor: Int, foregroundColor: Int, result: Result) {
-    AwesomeQRCode.Renderer().contents(content)
-            .size(size).margin(20)
-            .colorDark(foregroundColor).colorLight(backgroundColor)
-            .renderAsync(object : AwesomeQRCode.Callback {
-              override fun onRendered(renderer: AwesomeQRCode.Renderer, bitmap: Bitmap) {
-                saveToFile(bitmap, content + "_" + size.toString() + "_" + backgroundColor.toString() + "_" + foregroundColor.toString(), result)
-              }
-
-              override fun onError(renderer: AwesomeQRCode.Renderer, e: Exception) {
-                e.printStackTrace()
-                result.error("ERROR", "Generate failed", null)
-              }
-            })
+    try {
+      val bitmap = QRCode.from(content).withSize(1024, 1024).withColor(foregroundColor, backgroundColor).bitmap()
+      saveToFile(bitmap, content + "_" + size.toString() + "_" + backgroundColor.toString() + "_" + foregroundColor.toString(), result)
+    } catch (e:Exception){
+      e.printStackTrace()
+      result.error("ERROR", "Generate failed", null)
+    }
   }
 }

@@ -5,11 +5,14 @@ PODS:
   - EFQRCode (4.5.0):
     - swift_qrcodejs (~> 1.0.1)
   - Flutter (1.0.0)
+  - permission (0.0.1):
+    - Flutter
   - swift_qrcodejs (1.0.1)
 
 DEPENDENCIES:
   - ef_qrcode (from `.symlinks/plugins/ef_qrcode/ios`)
   - Flutter (from `.symlinks/flutter/ios`)
+  - permission (from `.symlinks/plugins/permission/ios`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -21,11 +24,14 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/ef_qrcode/ios"
   Flutter:
     :path: ".symlinks/flutter/ios"
+  permission:
+    :path: ".symlinks/plugins/permission/ios"
 
 SPEC CHECKSUMS:
   ef_qrcode: f5c5472c40c1c23d5a63dde1ba1c2b40dd87dbef
   EFQRCode: 842f431e660da841f518993af8f4cbd275601d84
   Flutter: 58dd7d1b27887414a370fcccb9e645c08ffd7a6a
+  permission: 51e2d3a8ef3490da0537667d7f1a6a1c5ba8ec47
   swift_qrcodejs: c181fe5c849d30c699546a23762d7e3dd143ab37
 
 PODFILE CHECKSUM: ebd43b443038e611b86ede96e613bd6033c49497

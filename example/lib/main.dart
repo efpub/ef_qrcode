@@ -98,18 +98,6 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
-  void acquireStoragePermissions() async {
-    try {
-      var permissions = await Permission.requestPermissions([PermissionName.Storage]);
-      setState(() {
-        _permissions = permissions;
-      });
-    }
-    catch (e) {
-      print(e);
-    }
-  }
-
   Future<void> initPlatformState() async {
     String platformVersion;
     try {
@@ -150,11 +138,11 @@ class _MyAppState extends State<MyApp> {
             new RaisedButton(onPressed: requestPermissions,//() => acquireStoragePermissions(),
               child: new Text("permissions"),
               color: Colors.red,
-            ),
+            ),/*
             new RaisedButton(onPressed: getPermissionsStatus,//() => acquireStoragePermissions(),
               child: new Text("status"),
               color: Colors.red,
-            ),
+            ),*/
             new RaisedButton(onPressed: () => generateImage(),
               child: new Text("generate"),
               color: Colors.blue,
