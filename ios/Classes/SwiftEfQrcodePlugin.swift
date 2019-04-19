@@ -45,7 +45,7 @@ public class SwiftEfQrcodePlugin: NSObject, FlutterPlugin {
 
     // https://medium.com/coding-with-flutter/intro-to-platform-channels-building-an-image-picker-in-flutter-7e79c20065
     func saveToFile(image: UIImage) -> Any {
-        guard let data = UIImageJPEGRepresentation(image, 1.0) else {
+        guard let data = image.jpegData(compressionQuality: 1.0) else {
             return FlutterError(code: "ERROR", message: "Could not encode image", details: nil)
         }
         let tempDir = NSTemporaryDirectory()
