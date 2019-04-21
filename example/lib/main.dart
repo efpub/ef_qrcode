@@ -4,7 +4,6 @@ import 'dart:io';
 
 import 'package:flutter/services.dart';
 import 'package:ef_qrcode/ef_qrcode.dart';
-import 'package:permission/permission.dart';
 
 void main() => runApp(MyApp());
 
@@ -22,8 +21,6 @@ class _MyAppState extends State<MyApp> {
   }
 
   File _imageFile;
-  List<Permissions> _permissions;
-  String _platformVersion = 'Unknown';
   String message = '';
   final contentController = TextEditingController();
   final backgroundColorController = TextEditingController();
@@ -32,7 +29,6 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    initPlatformState();
     contentController.addListener(_printContentValue);
     backgroundColorController.addListener(_printbackgroundColorValue);
     foregroundColorController.addListener(_printforegroundColorValue);
@@ -70,48 +66,6 @@ class _MyAppState extends State<MyApp> {
     }
   }
 
-  getPermissionsStatus() async {
-    List<PermissionName> permissionNames = [];
-    permissionNames.add(PermissionName.Storage);
-    message = '';
-    List<Permissions> permissions = await Permission.getPermissionsStatus(permissionNames);
-    permissions.forEach((permission) {
-      message += '${permission.permissionName}: ${permission.permissionStatus}\n';
-    });
-    setState(() {
-      message;
-      print(message);
-    });
-  }
-
-  requestPermissions() async {
-    List<PermissionName> permissionNames = [];
-    permissionNames.add(PermissionName.Storage);
-    message = '';
-    var permissions = await Permission.requestPermissions(permissionNames);
-    permissions.forEach((permission) {
-      message += '${permission.permissionName}: ${permission.permissionStatus}\n';
-    });
-    setState(() {
-      message;
-      print(message);
-    });
-  }
-
-  Future<void> initPlatformState() async {
-    String platformVersion;
-    try {
-      platformVersion = await EfQrcode.platformVersion;
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
-    }
-
-    if (!mounted) return;
-
-    setState(() {
-      _platformVersion = platformVersion;
-    });
-  }
 
   Widget _buildImage() {
     if (_imageFile != null) {
@@ -135,10 +89,7 @@ class _MyAppState extends State<MyApp> {
             buildTextField(contentController, 'Content'),
             buildTextField(backgroundColorController, 'BackgroundColor'),
             buildTextField(foregroundColorController, 'ForegroundColor'),
-            new RaisedButton(onPressed: requestPermissions,//() => acquireStoragePermissions(),
-              child: new Text("permissions"),
-              color: Colors.red,
-            ),/*
+            /*
             new RaisedButton(onPressed: getPermissionsStatus,//() => acquireStoragePermissions(),
               child: new Text("status"),
               color: Colors.red,

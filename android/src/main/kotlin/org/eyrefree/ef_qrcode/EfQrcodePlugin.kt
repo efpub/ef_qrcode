@@ -1,6 +1,6 @@
 package org.eyrefree.ef_qrcode
 
-import android.content.ContentValues.TAG
+import android.content.Context
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
@@ -11,51 +11,43 @@ import net.glxn.qrgen.android.QRCode
 
 import android.graphics.Bitmap
 import android.graphics.Color
-import android.net.Uri
-import android.os.Environment
+import android.text.TextUtils
 import android.util.Log
-import net.glxn.qrgen.core.image.ImageType
 import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
-import kotlin.math.absoluteValue
 
-class EfQrcodePlugin: MethodCallHandler {
+class EfQrcodePlugin(private val context: Context): MethodCallHandler {
   companion object {
     @JvmStatic
     fun registerWith(registrar: Registrar) {
       val channel = MethodChannel(registrar.messenger(), "ef_qrcode")
-      channel.setMethodCallHandler(EfQrcodePlugin())
+      channel.setMethodCallHandler(EfQrcodePlugin(registrar.context()))
     }
+
+    private const val TAG = "EfQrcodePlugin"
   }
 
   override fun onMethodCall(call: MethodCall, result: Result) {
     if (call.method == "generate") {
-      var content = "NULL"
       val size: Int = 1024
-      var backgroundColor = Color.WHITE
-      var foregroundColor = Color.BLACK
       try {
-        val contentStr = call.argument<String>("content")!!
-        if (contentStr != "") {
-          content = contentStr
+        val content = call.argument<String>("content")
+        val backgroundColorStr = call.argument<String>("backgroundColor")
+        val foregroundColorStr = call.argument<String>("foregroundColor")
+
+        val backgroundColor = when  {
+          TextUtils.isEmpty(backgroundColorStr) -> Color.WHITE
+          else -> Color.parseColor(backgroundColorStr)
         }
+        val foregroundColor = when  {
+          TextUtils.isEmpty(foregroundColorStr) -> Color.BLACK
+          else -> Color.parseColor(foregroundColorStr)
+        }
+        generate(content, size, backgroundColor, foregroundColor, result)
       } catch (e: Exception) { // Catch the exception
         e.printStackTrace()
       }
-      try {
-        val backgroundColorStr = call.argument<String>("backgroundColor")!!
-        backgroundColor = Color.parseColor(backgroundColorStr)
-      } catch (e: Exception) { // Catch the exception
-        e.printStackTrace()
-      }
-      try {
-        val foregroundColorStr = call.argument<String>("foregroundColor")!!
-        foregroundColor = Color.parseColor(foregroundColorStr)
-      } catch (e: Exception) { // Catch the exception
-        e.printStackTrace()
-      }
-      generate(content, size, backgroundColor, foregroundColor, result)
     } else if (call.method == "getPlatformVersion") {
       result.success("Android ${android.os.Build.VERSION.RELEASE}")
     } else {
@@ -63,9 +55,11 @@ class EfQrcodePlugin: MethodCallHandler {
     }
   }
 
-  fun saveToFile(image: Bitmap, content: String, result: Result) {
-    val path = Environment.getExternalStorageDirectory().toString()
-    val imageFile = File(path, content + ".jpg")
+  private fun saveToFile(image: Bitmap, content: String, result: Result) {
+    val path = File(context.externalCacheDir, "ef_qrcode")
+    if (!path.exists()) path.mkdir()
+    val imageFile = File(path, "$content.jpg")
+    if (imageFile.exists()) imageFile.delete()
     try {
       val stream: OutputStream = FileOutputStream(imageFile)
       image.compress(Bitmap.CompressFormat.JPEG, 100, stream)
@@ -80,13 +74,9 @@ class EfQrcodePlugin: MethodCallHandler {
     }
   }
 
-  fun generate(content: String, size: Int, backgroundColor: Int, foregroundColor: Int, result: Result) {
-    try {
-      val bitmap = QRCode.from(content).withSize(1024, 1024).withColor(foregroundColor, backgroundColor).bitmap()
-      saveToFile(bitmap, content + "_" + size.toString() + "_" + backgroundColor.toString() + "_" + foregroundColor.toString(), result)
-    } catch (e:Exception){
-      e.printStackTrace()
-      result.error("ERROR", "Generate failed", null)
-    }
+  @Throws(Exception::class)
+  private fun generate(content: String?, size: Int, backgroundColor: Int, foregroundColor: Int, result: Result) {
+    val bitmap = QRCode.from(content).withSize(1024, 1024).withColor(foregroundColor, backgroundColor).bitmap()
+    saveToFile(bitmap, content + "_" + size.toString() + "_" + backgroundColor.toString() + "_" + foregroundColor.toString(), result)
   }
 }

@@ -2,8 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="org.eyrefree.ef_qrcode_example">
 
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" tools:remove="android:maxSdkVersion"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" tools:remove="android:maxSdkVersion"/>
+
 
     <!-- io.flutter.app.FlutterApplication is an android.app.Application that
          calls FlutterMain.startInitialization(this); in its onCreate method.
