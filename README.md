@@ -16,22 +16,6 @@ For help getting started with Flutter, view our [online documentation](https://f
 
 ## Use
 
-### Android
-
-This pub need `WRITE_EXTERNAL_STORAGE` permission, so add this to `AndroidManifest.xml` in your project first:
-
-```xml
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" tools:remove="android:maxSdkVersion"/>
-```
-
-And do not forget to request permissions before use with some approaches like `checkSelfPermission` or `shouldShowRequestPermissionRationale`.
-
-### iOS
-
-Nothing.
-
-### Flutter
-
 1. Dependency
 
 In your `pubspec.yaml`, add the following config:

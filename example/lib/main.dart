@@ -89,11 +89,6 @@ class _MyAppState extends State<MyApp> {
             buildTextField(contentController, 'Content'),
             buildTextField(backgroundColorController, 'BackgroundColor'),
             buildTextField(foregroundColorController, 'ForegroundColor'),
-            /*
-            new RaisedButton(onPressed: getPermissionsStatus,//() => acquireStoragePermissions(),
-              child: new Text("status"),
-              color: Colors.red,
-            ),*/
             new RaisedButton(onPressed: () => generateImage(),
               child: new Text("generate"),
               color: Colors.blue,

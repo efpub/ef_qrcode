@@ -3,7 +3,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'ef_qrcode'
-  s.version          = '0.2.1'
+  s.version          = '0.2.2'
   s.summary          = 'A better way to operate quick response code in Flutter.'
   s.description      = <<-DESC
 ef_qrcode is a lightweight, pure-Swift library for generating pretty QRCode image with input watermark or icon and recognizing QRCode from image, it is based on CoreGraphics, CoreImage and ImageIO. ef_qrcode provides you a better way to operate QRCode in your app.

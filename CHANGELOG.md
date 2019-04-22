@@ -2,6 +2,12 @@
 
 -----
 
+## [0.2.2](https://github.com/EFPub/ef_qrcode/releases/tag/0.2.2) (2019-04-22)
+
+- Remove permission requirement.
+
+---
+
 ## [0.2.1](https://github.com/EFPub/ef_qrcode/releases/tag/0.2.1) (2019-04-20)
 
 - Add swift version.
