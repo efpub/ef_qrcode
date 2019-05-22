@@ -101,7 +101,7 @@ class _MyAppState extends State<MyApp> {
               // checkbox
               new CheckboxListTile(
                 value: this.isSelectWatermark,
-                title: Text('使用水印'),
+                title: Text('use watermark'),
                 activeColor: Colors.blue,
                 onChanged: (bool val) {
                   // val 是布尔值
