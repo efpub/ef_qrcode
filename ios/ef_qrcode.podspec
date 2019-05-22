@@ -18,6 +18,6 @@ ef_qrcode is a lightweight, pure-Swift library for generating pretty QRCode imag
 
   s.swift_version = '4.2'
   s.ios.deployment_target = '8.0'
-  s.dependency 'EFQRCode', '~> 4.5.0'
+  s.dependency 'EFQRCode', '~> 5.0.0'
 end
 

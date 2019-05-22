@@ -1,11 +1,11 @@
 PODS:
-  - ef_qrcode (0.2.1):
-    - EFQRCode (~> 4.5.0)
+  - ef_qrcode (0.2.2):
+    - EFQRCode (~> 5.0.0)
     - Flutter
-  - EFQRCode (4.5.0):
-    - swift_qrcodejs (~> 1.0.1)
+  - EFQRCode (5.0.0):
+    - swift_qrcodejs (~> 1.1.1)
   - Flutter (1.0.0)
-  - swift_qrcodejs (1.0.1)
+  - swift_qrcodejs (1.1.1)
 
 DEPENDENCIES:
   - ef_qrcode (from `.symlinks/plugins/ef_qrcode/ios`)
@@ -23,10 +23,10 @@ EXTERNAL SOURCES:
     :path: ".symlinks/flutter/ios"
 
 SPEC CHECKSUMS:
-  ef_qrcode: c38950bd34d66cd049002ee82324febc0cd551ed
-  EFQRCode: 842f431e660da841f518993af8f4cbd275601d84
+  ef_qrcode: 45b66a20f05c5a5d6229d0f41623fbdf9a5632ed
+  EFQRCode: 07437cfbce3a1e497397a4f3d766c980d8972608
   Flutter: 58dd7d1b27887414a370fcccb9e645c08ffd7a6a
-  swift_qrcodejs: c181fe5c849d30c699546a23762d7e3dd143ab37
+  swift_qrcodejs: 0bacbfe321a99954c7b8e04c75562007ea4e4f7c
 
 PODFILE CHECKSUM: ebd43b443038e611b86ede96e613bd6033c49497
 
