@@ -54,6 +54,7 @@ class EfQrcodePlugin(private val context: Context): MethodCallHandler {
         val renderOption = RenderOption()
         renderOption.content = content
         renderOption.size = size
+        renderOption.borderWidth = 0
 
         val color = com.github.sumimakito.awesomeqr.option.color.Color()
         color.background = Color.parseColor(backgroundColorStr)
