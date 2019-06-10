@@ -22,7 +22,7 @@ In your `pubspec.yaml`, add the following config:
 
 ```yaml
 dependencies:
-   ef_qrcode: 0.2.1
+   ef_qrcode: 0.3.0
 ```
 
 2. Generate

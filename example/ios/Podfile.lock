@@ -1,5 +1,5 @@
 PODS:
-  - ef_qrcode (0.2.2):
+  - ef_qrcode (0.3.0):
     - EFQRCode (~> 5.0.0)
     - Flutter
   - EFQRCode (5.0.0):
@@ -23,7 +23,7 @@ EXTERNAL SOURCES:
     :path: ".symlinks/flutter/ios"
 
 SPEC CHECKSUMS:
-  ef_qrcode: 45b66a20f05c5a5d6229d0f41623fbdf9a5632ed
+  ef_qrcode: f0c2aa4f6c56a6bf87c6d9f06d71aa4b60eb7d42
   EFQRCode: 07437cfbce3a1e497397a4f3d766c980d8972608
   Flutter: 58dd7d1b27887414a370fcccb9e645c08ffd7a6a
   swift_qrcodejs: 0bacbfe321a99954c7b8e04c75562007ea4e4f7c
