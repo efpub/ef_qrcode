@@ -2,6 +2,12 @@
 
 -----
 
+## [0.3.1](https://github.com/EFPub/ef_qrcode/releases/tag/0.3.1) (2019-06-11)
+
+- Fix Android sdk issue.
+
+---
+
 ## [0.3.0](https://github.com/EFPub/ef_qrcode/releases/tag/0.3.0) (2019-06-10)
 
 - Support watermark;
