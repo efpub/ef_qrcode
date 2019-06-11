@@ -2,6 +2,12 @@
 
 -----
 
+## [0.3.2](https://github.com/EFPub/ef_qrcode/releases/tag/0.3.2) (2019-06-11)
+
+- Fix Android build.gradle.
+
+---
+
 ## [0.3.1](https://github.com/EFPub/ef_qrcode/releases/tag/0.3.1) (2019-06-11)
 
 - Fix Android sdk issue.
