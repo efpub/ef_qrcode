@@ -11,18 +11,10 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.Rect
-import android.text.TextUtils
-import android.util.Log
 import com.github.sumimakito.awesomeqr.AwesomeQrRenderer
 import com.github.sumimakito.awesomeqr.option.RenderOption
-import com.github.sumimakito.awesomeqr.option.background.Background
 import com.github.sumimakito.awesomeqr.option.background.StillBackground
-import com.github.sumimakito.awesomeqr.option.logo.Logo
-import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel
 import java.io.ByteArrayOutputStream
-import java.io.File
-import java.io.FileOutputStream
-import java.io.OutputStream
 
 class EfQrcodePlugin(private val context: Context): MethodCallHandler {
   companion object {
